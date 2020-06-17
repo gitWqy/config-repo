@@ -1,0 +1,19 @@
+#集群服务3配置项开始
+server:
+  port: 10031 #集群服务3端口
+eureka:
+  server:
+    enable-self-preservation: false # 测试时关闭自我保护机制，保证不可用服务及时踢出
+  instance:
+    hostname: eureka03 #集群服务3主机名称，在hosts中配置了
+    instance-id: A01EurekaServerPJPlus-eureka03
+  client:
+    #    fetch-registry: false
+    #    register-with-eureka: false
+    service-url:
+      defaultZone: http://eureka01:10011/eureka,http://eureka02:10021/eureka #集群服务3需要注册进入集群服务1和集群服务2中
+#集群服务3配置项完毕
+#集群的spring.application.name需要一致
+spring:
+  application:
+    name: a01eurekaserverpjplus
